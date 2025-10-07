@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melawan & Merawat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; scroll-behavior: smooth; }
+    body {
+      background: url('1000454229.jpg') center/cover no-repeat;
+      color: white;
+      height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      transition: background 0.5s ease;
+    }
+    h1 { font-size: 3em; font-weight: bold; margin-bottom: 0.3em; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    p { font-size: 1.1em; opacity: 0.9; }
+    button {
+      margin-top: 2em; padding: 0.8em 2em;
+      background: #9ad0a1; border: none; border-radius: 2em;
+      cursor: pointer; font-weight: 600; color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    button:hover { background: #7ecb89; transform: scale(1.05); }
+    nav {
+      position: fixed; top: 20px; width: 100%; display: flex; justify-content: center; gap: 2em;
+      background: rgba(0,0,0,0.3); padding: 10px 0; border-radius: 2em;
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      color: white; text-decoration: none; font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #9ad0a1; }
+    .theme-toggle {
+      position: fixed; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.2); border: none; border-radius: 50%;
+      width: 40px; height: 40px; color: white; cursor: pointer;
+    }
+    iframe#player { position: fixed; bottom: 10px; right: 10px; border: none; width: 300px; height: 80px; }
+    body.dark { background-color: #121212; color: #ddd; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Melawan</a>
+    <a href="isi.html">Merawat</a>
+  </nav>
+
+  <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+
+  <h1>Melawan dan Merawat</h1>
+  <p>dengan hal-hal kecil</p>
+
+  <button onclick="fadeTo('isi.html')">Explore</button>
+
+  <iframe id="player" src="player.html"></iframe>
+
+  <script>
+    const toggleTheme = () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    };
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+    function fadeTo(url) {
+      document.body.style.opacity = 0;
+      setTimeout(() => { window.location.href = url; }, 500);
+    }
+  </script>
+</body>
+</html>

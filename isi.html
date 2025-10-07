@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merawat Komunitas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0; font-family: "Poppins", sans-serif; background: #f3f6f4; color: #222;
+      transition: all 0.5s ease;
+      padding: 5em 2em; line-height: 1.7em;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.4); color: white; display: flex; justify-content: center;
+      gap: 2em; padding: 10px 0; backdrop-filter: blur(10px);
+    }
+    nav a { color: white; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: #9ad0a1; }
+    h1 { color: #2f7043; margin-top: 2em; }
+    iframe#player { position: fixed; bottom: 10px; right: 10px; border: none; width: 300px; height: 80px; }
+    body.dark { background: #121212; color: #ddd; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Melawan</a>
+    <a href="isi.html">Merawat</a>
+  </nav>
+
+  <h1>Merawat Komunitas</h1>
+  <p>
+    Masyarakat sipil berperan penting dalam membentuk proses keadilan dan akuntabilitas yang inklusif.
+    Pengecualian mereka dapat merusak prospek tercapainya keadilan yang bermakna dan perubahan berkelanjutan.
+  </p>
+  <p>
+    Kami berkomitmen memperkuat efektivitas kerangka kerja dan sistem akuntabilitas untuk melawan impunitas
+    melalui dialog, advokasi, dan peningkatan kesadaran antara penyedia keadilan dan organisasi masyarakat sipil.
+  </p>
+  <p>
+    Semua tindakan berpijak pada pendekatan yang berpusat pada penyintas — mendorong strategi yang peka terhadap trauma
+    dan responsif gender, dengan para korban sebagai aktor dan advokat.
+  </p>
+  <p>
+    Ancaman impunitas terlalu besar untuk ditangani sendirian, namun melalui kolaborasi,
+    Inisiatif Global Melawan Impunitas berupaya membantu mewujudkan keadilan bagi mereka yang paling membutuhkannya.
+  </p>
+
+  <iframe id="player" src="player.html"></iframe>
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+  </script>
+</body>
+</html>

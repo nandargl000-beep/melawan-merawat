@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0; background: rgba(0,0,0,0.3);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.5em 1em; border-radius: 1em;
+    backdrop-filter: blur(8px); color: white; font-family: "Poppins", sans-serif;
+  }
+  button { background: none; border: none; color: white; font-size: 1.2em; cursor: pointer; }
+  input[type="range"] { width: 100px; }
+</style>
+</head>
+<body>
+  <button id="prev"><i class="fa-solid fa-rotate"></i></button>
+  <button id="play"><i class="fa-solid fa-play"></i></button>
+  <span id="title">Fade Into You (Instrumental)</span>
+  <input type="range" id="seek" value="0">
+  <span id="time">0:00</span>
+
+<script>
+  const songs = [
+    { title: "Fade Into You (Instrumental)", src: "https://cdn.pixabay.com/download/audio/2024/04/04/audio_dreamy.mp3?filename=dreamy-vibes.mp3" },
+    { title: "Sweet Heat Lightning (Instrumental)", src: "https://cdn.pixabay.com/download/audio/2024/03/12/audio_soft_light.mp3?filename=soft-light.mp3" }
+  ];
+  let i = 0, playing = false;
+  const audio = new Audio(songs[i].src);
+  audio.volume = 0.5;
+
+  const playBtn = document.getElementById('play');
+  const prevBtn = document.getElementById('prev');
+  const seek = document.getElementById('seek');
+  const title = document.getElementById('title');
+  const time = document.getElementById('time');
+
+  playBtn.onclick = () => {
+    if (!playing) {
+      audio.play(); playing = true;
+      playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+    } else {
+      audio.pause(); playing = false;
+      playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+    }
+  };
+
+  prevBtn.onclick = () => {
+    i = (i + 1) % songs.length;
+    audio.src = songs[i].src;
+    title.textContent = songs[i].title;
+    if (playing) audio.play();
+  };
+
+  audio.ontimeupdate = () => {
+    seek.value = (audio.currentTime / audio.duration) * 100 || 0;
+    time.textContent = Math.floor(audio.currentTime / 60) + ":" + String(Math.floor(audio.currentTime % 60)).padStart(2, "0");
+  };
+
+  seek.oninput = () => {
+    audio.currentTime = (seek.value / 100) * audio.duration;
+  };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</body>
+</html>
